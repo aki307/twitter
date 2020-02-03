@@ -10,7 +10,6 @@
                     </div>
                     <div class="card-body">
                         <img class="rounded img-fluid" src="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
-                        
                     </div>
                 </div>
             </aside>
@@ -19,21 +18,21 @@
                     {!! Form::open(['route' => 'microposts.store']) !!}
                         <div class="form-group">
                             {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                            {!! Form::submit('Post', ['class => 'btn btn-primary btn-block']) !!}
+                            {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
                         </div>
                     {!! Form::close() !!}
                 @endif
-                @if(count($microposts) >0)
+                @if (count($microposts) > 0)
                     @include('microposts.microposts', ['microposts' => $microposts])
                 @endif
             </div>
         </div>
     @else
-    <div class="center jumbotron">
-        <div class="text-center">
-            <h1>Welcome to the Microposts</h1>
-            {!! link_to_route('signup.get', 'Sign up now!',[],['class' => 'btn btn-lg btn-primary']) !!}
+        <div class="center jumbotron">
+            <div class="text-center">
+                <h1>Welcome to the Microposts</h1>
+                {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            </div>
         </div>
-    </div>
     @endif
 @endsection
