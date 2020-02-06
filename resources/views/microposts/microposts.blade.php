@@ -16,6 +16,15 @@
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                         {!! Form::close() !!}
                     @endif
+                    @if(Auth::user()->is_favoriting($micropost->id))
+                        {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+                            {!! Form::submit('お気に入り解除', ['class' => "btn btn-danger btn-block"]) !!}
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+                            {!! Form::submit('お気に入り★', ['class' => "btn btn-danger btn-block"]) !!}
+                        {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
         </li>
